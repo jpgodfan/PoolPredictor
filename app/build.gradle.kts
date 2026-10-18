@@ -17,8 +17,11 @@ android {
 
         externalNativeBuild {
             cmake {
-                cppFlags = "-std=c++17 -fexceptions -frtti"
-                arguments.add("-DOpenCV_DIR=${rootDir}/third_party/opencv-android-sdk/sdk/native/jni")
+                // FIX: Use += to add to the MutableList instead of =
+                cppFlags += "-std=c++17"
+                cppFlags += "-fexceptions"
+                cppFlags += "-frtti"
+                arguments += "-DOpenCV_DIR=${rootDir}/third_party/opencv-android-sdk/sdk/native/jni"
             }
         }
     }
