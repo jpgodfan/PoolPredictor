@@ -17,11 +17,11 @@ android {
 
         externalNativeBuild {
             cmake {
-                // FIX: Use += to add to the MutableList instead of =
-                cppFlags += "-std=c++17"
-                cppFlags += "-fexceptions"
-                cppFlags += "-frtti"
-                arguments += "-DOpenCV_DIR=${rootDir}/third_party/opencv-android-sdk/sdk/native/jni"
+                cppFlags.add("-std=c++17")
+                cppFlags.add("-fexceptions")
+                cppFlags.add("-frtti")
+                arguments.add("-DOpenCV_DIR=${rootDir}/third_party/opencv-android-sdk/sdk/native/jni")
+                arguments.add("-DANDROID_STL=c++_shared")
             }
         }
     }
@@ -54,8 +54,7 @@ android {
 
     sourceSets {
         getByName("main") {
-            jniLibs.srcDir("src/main/jniLibs")
-            jniLibs.srcDir("${rootDir}/third_party/opencv-android-sdk/sdk/native/libs")
+            jniLibs.srcDirs("src/main/jniLibs", "${rootDir}/third_party/opencv-android-sdk/sdk/native/libs")
         }
     }
 
