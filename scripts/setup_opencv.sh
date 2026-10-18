@@ -18,6 +18,9 @@ if [ ! -d "third_party/opencv-android-sdk" ]; then
   mv third_party/opencv-tmp/OpenCV-android-sdk third_party/opencv-android-sdk
 
   rm -rf "${ZIP_NAME}" third_party/opencv-tmp
+  
+  # FIX: Remove samples to prevent Gradle wrapper validation errors and save space
+  rm -rf third_party/opencv-android-sdk/samples
 fi
 
 echo "OpenCV Android SDK ready at third_party/opencv-android-sdk"
