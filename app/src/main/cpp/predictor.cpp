@@ -723,11 +723,11 @@ std::string predictJson(const cv::Mat& bgr, int frameWidth, int frameHeight) {
     params.minCenterSegmentLength = params.fixedRadius + scaledFloat(BASE_MIN_CENTER_SEGMENT_EXTRA);
 
     params.borderHorizontalLength = std::min(scaledInt(BASE_BORDER_HORIZONTAL_LENGTH), roiW - 1);
-    params.borderDiagonalLength = std::min(
-        scaledInt(BASE_BORDER_DIAGONAL_LENGTH),
-        roiW - 1,
-        roiH - 1
-    );
+    params.borderDiagonalLength = std::min({
+           scaledInt(BASE_BORDER_DIAGONAL_LENGTH),
+           roiW - 1,
+           roiH - 1
+       });
 
     cv::Mat gray;
     cv::cvtColor(roiMat, gray, cv::COLOR_BGR2GRAY);
