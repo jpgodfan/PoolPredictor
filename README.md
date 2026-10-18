@@ -1,0 +1,2 @@
+# PoolPredictor
+Pool (Billiards) predictor
